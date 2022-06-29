@@ -19,7 +19,7 @@ class BaseTest:
 
         return test_methods
 
-    def run(self):
+    def run(self) -> bool:
         self._test_methods = self._get_test_methods()
         for test in self._test_methods:
             method_name = test.__name__
@@ -31,6 +31,11 @@ class BaseTest:
                 'start': start_time,
                 'finish': finished_time
             }
+
+            if self._failed_test:
+                return False
+
+        return True
 
 
 class UnitTest(BaseTest):
