@@ -1,4 +1,7 @@
 from datetime import datetime
+from typing import Any
+
+import inspect
 
 
 class BaseTest:
@@ -30,5 +33,23 @@ class BaseTest:
             }
 
 
+class UnitTest(BaseTest):
+    def __init__(self):
+        super().__init__()
+
+    def assert_true(self, value: Any, message: str):
+        error_msg = f'{value} is not true : {message}'
+        stack = inspect.stack()
+        _test_name = stack[1].function
+        _test_file = stack[1].filename
+
+        if not value:
+            self._failed_test[_test_name] = {
+                'function': _test_name,
+                'file': _test_file,
+                'message': error_msg
+            }
+
+
 if __name__ == '__main__':
-    u = BaseTest()
+    pass
