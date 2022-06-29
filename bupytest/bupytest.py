@@ -55,6 +55,19 @@ class UnitTest(BaseTest):
                 'message': error_msg
             }
 
+    def assert_false(self, value: Any, message: str):
+        error_msg = f'{value} is not false : {message}'
+        stack = inspect.stack()
+        _test_name = stack[1].function
+        _test_file = stack[1].filename
+
+        if value:
+            self._failed_test[_test_name] = {
+                'function': _test_name,
+                'file': _test_file,
+                'message': error_msg
+            }
+
 
 if __name__ == '__main__':
     pass
