@@ -1,11 +1,11 @@
 from datetime import datetime
 
 
-class UnitTest:
+class BaseTest:
     def __init__(self):
         self._test_methods = []
         self._finished_tests = {}
-        self.failed_test = {}
+        self._failed_test = {}
 
     def _get_test_methods(self) -> list:
         test_methods = []
@@ -31,4 +31,4 @@ class UnitTest:
 
 
 if __name__ == '__main__':
-    u = UnitTest()
+    u = BaseTest()
