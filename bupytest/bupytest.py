@@ -19,6 +19,9 @@ class BaseTest:
 
         return test_methods
 
+    def get_finished_tests(self) -> dict:
+        return self._finished_tests
+
     def run(self) -> bool:
         self._test_methods = self._get_test_methods()
         for test in self._test_methods:
