@@ -46,3 +46,10 @@ def main():
     _test_name = stack[1].function
     _test_file = stack[1].filename.replace('.py', '')
     _test_file_module = os.path.basename(_test_file)
+
+    result = run_tests(_test_file_module)
+    print('-' * 30)
+    if not result:
+        print('\033[1;31mFAILED.\033[m')
+    else:
+        print('\033[1;32mSUCCESS.\033[m')
