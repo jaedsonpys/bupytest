@@ -30,12 +30,12 @@ class BaseTest:
             test.__call__()
             finished_time = datetime.now()
 
+            if self.failed_test:
+                return True
+
             self._finished_tests[method_name] = {
                 'time': finished_time - start_time
             }
-
-            if self.failed_test:
-                return True
 
         return False
 
