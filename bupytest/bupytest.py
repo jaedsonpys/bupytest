@@ -8,7 +8,7 @@ class BaseTest:
     def __init__(self):
         self._test_methods = []
         self._finished_tests = {}
-        self._failed_test = {}
+        self.failed_test = {}
 
     def _get_test_methods(self) -> list:
         test_methods = []
@@ -32,7 +32,7 @@ class BaseTest:
                 'finish': finished_time
             }
 
-            if self._failed_test:
+            if self.failed_test:
                 return False
 
         return True
@@ -49,7 +49,7 @@ class UnitTest(BaseTest):
         _test_file = stack[1].filename
 
         if not value:
-            self._failed_test[_test_name] = {
+            self.failed_test[_test_name] = {
                 'function': _test_name,
                 'file': _test_file,
                 'message': error_msg
@@ -62,7 +62,7 @@ class UnitTest(BaseTest):
         _test_file = stack[1].filename
 
         if value:
-            self._failed_test[_test_name] = {
+            self.failed_test[_test_name] = {
                 'function': _test_name,
                 'file': _test_file,
                 'message': error_msg
@@ -75,7 +75,7 @@ class UnitTest(BaseTest):
         _test_file = stack[1].filename
 
         if value != expected:
-            self._failed_test[_test_name] = {
+            self.failed_test[_test_name] = {
                 'function': _test_name,
                 'file': _test_file,
                 'message': error_msg
