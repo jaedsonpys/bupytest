@@ -33,9 +33,9 @@ class BaseTest:
             }
 
             if self.failed_test:
-                return False
+                return True
 
-        return True
+        return False
 
 
 class UnitTest(BaseTest):
