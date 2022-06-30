@@ -33,8 +33,14 @@ class BaseTest:
             if self.failed_test:
                 return True
 
+            second_time = str(finished_time.second - start_time.second)
+            microseconds_time = str(finished_time.microsecond - start_time.microsecond)
+
+            if len(second_time) == 1:
+                second_time = '0' + second_time
+
             self._finished_tests[method_name] = {
-                'time': finished_time - start_time
+                'time': f'{second_time}.{microseconds_time[:2]}'
             }
 
         return False
