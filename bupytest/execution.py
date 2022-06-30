@@ -37,6 +37,8 @@ def run_tests(module_name: str) -> bool:
             print(f'\033[31m{cls_test_name}.{method_test_name}: {error_msg} | FAILED\033[m')
             return False
 
+        print('-' * 30)
+
     return True
 
 
