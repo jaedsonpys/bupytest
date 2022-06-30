@@ -40,7 +40,7 @@ def run_tests(module_name: str) -> bool:
     return True
 
 
-def main():
+def this():
     stack = inspect.stack()
 
     _test_name = stack[1].function
