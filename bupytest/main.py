@@ -26,17 +26,15 @@ def run_tests(module_name: str) -> bool:
         finished_tests = test.get_finished_tests()
 
         for name, info in finished_tests.items():
-            print(f'\033[32m{module_name}.{cls_test_name}.{name}: {info["time"]} OK\033[m')
+            print(f'\033[32m{cls_test_name}.{name}: {info["time"]} | OK\033[m')
 
         if has_error:
             failed_test = test.failed_test
             method_test_name = failed_test['function']
-            error_message = failed_test['message']
+            error_msg = failed_test['message']
 
             print('-' * 30)
-            print(f'\033[31mAssertion error:')
-            print(f'\ttest: {module_name}.{cls_test_name}.{method_test_name}')
-            print(f'\tmessage: {error_message}\033[m')
+            print(f'\033[31m{cls_test_name}.{method_test_name}: {error_msg} | FAILED\033[m')
             return False
 
     return True
