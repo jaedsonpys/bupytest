@@ -50,8 +50,12 @@ class UnitTest(BaseTest):
     def __init__(self):
         super().__init__()
 
-    def assert_true(self, value: Any, message: str):
-        error_msg = f'{value} is not true : {message}'
+    def assert_true(self, value: Any, message: str = None):
+        if message:
+            error_msg = message
+        else:
+            error_msg = f'{value} is not true'
+
         stack = inspect.stack()
         _test_name = stack[1].function
         _test_file = stack[1].filename
@@ -63,8 +67,12 @@ class UnitTest(BaseTest):
                 'message': error_msg
             }
 
-    def assert_false(self, value: Any, message: str):
-        error_msg = f'{value} is not false : {message}'
+    def assert_false(self, value: Any, message: str = None):
+        if message:
+            error_msg = message
+        else:
+            error_msg = f'{value} is not true'
+
         stack = inspect.stack()
         _test_name = stack[1].function
         _test_file = stack[1].filename
@@ -76,8 +84,12 @@ class UnitTest(BaseTest):
                 'message': error_msg
             }
 
-    def assert_expected(self, value: Any, expected: Any, message: str):
-        error_msg = f'{value} is not {expected} : {message}'
+    def assert_expected(self, value: Any, expected: Any, message: str = None):
+        if message:
+            error_msg = message
+        else:
+            error_msg = f'"{value}" is not "{expected}"'
+
         stack = inspect.stack()
         _test_name = stack[1].function
         _test_file = stack[1].filename
