@@ -31,8 +31,7 @@ class BaseTest:
             finished_time = datetime.now()
 
             self._finished_tests[method_name] = {
-                'start': start_time,
-                'finish': finished_time
+                'time': finished_time - start_time
             }
 
             if self.failed_test:
