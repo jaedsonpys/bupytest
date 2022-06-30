@@ -52,7 +52,7 @@ class UnitTest(BaseTest):
         _test_file = stack[1].filename
 
         if not value:
-            self.failed_test[_test_name] = {
+            self.failed_test = {
                 'function': _test_name,
                 'file': _test_file,
                 'message': error_msg
@@ -65,7 +65,7 @@ class UnitTest(BaseTest):
         _test_file = stack[1].filename
 
         if value:
-            self.failed_test[_test_name] = {
+            self.failed_test = {
                 'function': _test_name,
                 'file': _test_file,
                 'message': error_msg
@@ -78,7 +78,7 @@ class UnitTest(BaseTest):
         _test_file = stack[1].filename
 
         if value != expected:
-            self.failed_test[_test_name] = {
+            self.failed_test = {
                 'function': _test_name,
                 'file': _test_file,
                 'message': error_msg
