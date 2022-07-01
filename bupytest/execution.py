@@ -55,3 +55,12 @@ def this():
         print('\033[1;31mFAILED.\033[m')
     else:
         print('\033[1;32mSUCCESS.\033[m')
+
+
+def execute_module(module_name: str):
+    result = run_tests(module_name)
+    print('-' * 30)
+    if not result:
+        print('\033[1;31mFAILED.\033[m')
+    else:
+        print('\033[1;32mSUCCESS.\033[m')
