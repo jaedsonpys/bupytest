@@ -1,5 +1,7 @@
 import inspect
 import importlib
+
+import sys
 import os
 
 
@@ -73,3 +75,20 @@ def execute_module(module_name: str, msg: bool = True) -> bool:
             print('\033[1;32mSUCCESS.\033[m')
 
     return result
+
+
+def execute_modules_dir(modules_dir: str):
+    dirs = os.listdir(modules_dir)
+    sys.path.insert(0, modules_dir)
+
+    for i in dirs:
+        if i.startswith('test_') and i.endswith('.py'):
+            i = i.replace('.py', '')
+            result = run_tests(i, package='.tests', print_module=True)
+            if not result:
+                print('-' * 30)
+                print('\033[1;31mFAILED.\033[m')
+                return None
+
+    print('-' * 30)
+    print('\033[1;32mSUCCESS\033[m')
