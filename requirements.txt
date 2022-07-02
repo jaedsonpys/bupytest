@@ -1,0 +1,2 @@
+argeasy~=1.1.1
+setuptools~=62.3.4
