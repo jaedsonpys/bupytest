@@ -15,7 +15,7 @@ def get_class_test(module_name: str) -> list:
     return class_list
 
 
-def run_tests(module_name: str) -> bool:
+def run_tests(module_name: str, print_module: bool = False) -> bool:
     test_list = get_class_test(module_name)
 
     for test in test_list:
@@ -26,15 +26,21 @@ def run_tests(module_name: str) -> bool:
         finished_tests = test.get_finished_tests()
 
         for name, info in finished_tests.items():
-            print(f'\033[32m{cls_test_name}.{name}: {info["time"]} | OK\033[m')
+            if print_module:
+                print(f'\033[32m{module_name}.{cls_test_name}.{name}: {info["time"]} | OK\033[m')
+            else:
+                print(f'\033[32m{cls_test_name}.{name}: {info["time"]} | OK\033[m')
 
         if has_error:
             failed_test = test.failed_test
-            method_test_name = failed_test['function']
+            name = failed_test['function']
             error_msg = failed_test['message']
 
             print('-' * 30)
-            print(f'\033[31m{cls_test_name}.{method_test_name}: {error_msg} | FAILED\033[m')
+            if print_module:
+                print(f'\033[31m{module_name}.{cls_test_name}.{name}: {error_msg} | FAILED\033[m')
+            else:
+                print(f'\033[31m{cls_test_name}.{name}: {error_msg} | FAILED\033[m')
             return False
 
         print('-' * 30)
