@@ -3,8 +3,8 @@ import importlib
 import os
 
 
-def get_class_test(module_name: str) -> list:
-    module = importlib.import_module(module_name)
+def get_class_test(module_name: str, package: str = None) -> list:
+    module = importlib.import_module(module_name, package)
     module_dir = module.__dir__()
     class_list = []
 
@@ -15,8 +15,8 @@ def get_class_test(module_name: str) -> list:
     return class_list
 
 
-def run_tests(module_name: str, print_module: bool = False) -> bool:
-    test_list = get_class_test(module_name)
+def run_tests(module_name: str, package: str = None, print_module: bool = False) -> bool:
+    test_list = get_class_test(module_name, package)
 
     for test in test_list:
         test = test()
