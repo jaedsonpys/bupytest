@@ -2,12 +2,12 @@
 
 BuPyTest is a library to perform **unit tests** on your code by classes. You can create tests using classes and run them together in a single file.
 
-In version `0.1.0` you can:
+In version `0.2.0` you can:
 
 - [x] Test **multiple classes** in one file;
-- [ ] Test using command line;
-- [ ] Test multiple files using **command line**;
-- [ ] Test only one file using **command line**;
+- [x] Test using command line;
+- [x] Test only one file using **command line**;
+- [X] Test multiple files using **command line**;
 
 You can install the **latest version** of BuPyTest using the `pip` package manager:
 
@@ -80,6 +80,28 @@ class TestBar(bupytest.UnitTest):
 if __name__ == '__main__':
     bupytest.this()
 ```
+
+### Command Line
+
+`bupytest` also has a **command line** application available to run tests, the script is called `bupytest`, see some **commands** and **flags** (use `--help` to get help):
+
+- `test`: this command tells you that a test will be run;
+- `-m`: this flag informs that the test is a python module;
+- `-d`: this flag informs that the test is a directory of test modules.
+
+With the `-d` flag, each of the files starting with "test_" will be executed. See an example of testing a module:
+
+```commandline
+bupytest test -m test_cookiedb.py
+```
+
+Now testing multiple test modules inside a directory:
+
+```commandline
+bupytest test -d tests/
+```
+
+> The `-m` and `-d` flags require the module or directory name.
 
 ## License
 
