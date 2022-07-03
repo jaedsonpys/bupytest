@@ -2,6 +2,7 @@ from . import execution
 from argeasy import ArgEasy
 
 import os
+import sys
 
 
 def main():
@@ -18,6 +19,8 @@ def main():
     args = parser.get_args()
 
     if args.test:
+        sys.path.insert(0, './')
+
         file = args.m
         directory = args.d
 
