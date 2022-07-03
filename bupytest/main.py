@@ -21,9 +21,10 @@ def main():
         file = args.m
         directory = args.d
 
-        if file and os.path.isfile(file):
-            file = file.replace('.py', '')
-            execution.execute_module(file)
-        else:
-            print(f'\033[31merror: file "{file}" not found\033[m')
-            return True
+        if file:
+            if os.path.isfile(file):
+                file = file.replace('.py', '')
+                execution.execute_module(file)
+            else:
+                print(f'\033[31merror: file "{file}" not found\033[m')
+                return True
