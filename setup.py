@@ -14,9 +14,15 @@ setup(
     version=__version__,
     license='GPL-3.0',
     packages=['bupytest'],
+    install_requires=['argeasy'],
     project_urls={
         'Source code': 'https://github.com/jaedsonpys/bupytest',
         'License': 'https://github.com/jaedsonpys/bupytest/blob/master/LICENSE',
         'Documentation': 'https://github.com/jaedsonpys/bupytest/blob/master/README.md'
+    },
+    entry_points={
+        'console_scripts': [
+            'bupytest = bupytest.main:main'
+        ]
     }
 )
