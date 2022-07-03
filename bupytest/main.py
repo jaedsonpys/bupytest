@@ -1,6 +1,8 @@
 from .execution import execute_module, execute_modules_dir
 from argeasy import ArgEasy
 
+import os
+
 
 def main():
     parser = ArgEasy(
@@ -9,6 +11,6 @@ def main():
         version='0.2.0'
     )
 
-    parser.add_argument('test', help='Tests a module or a module directory')
-    parser.add_flag('-d', help='Specifies that the path of "test" is a directory', action='store_true')
-    parser.add_flag('-m', help='Specifies that the path of "test" is a module', action='store_true')
+    parser.add_argument('test', 'Tests a module or a module directory', action='store_true')
+    parser.add_flag('-d', 'Specifies that the path of "test" is a directory')
+    parser.add_flag('-m', 'Specifies that the path of "test" is a module')
