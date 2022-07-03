@@ -34,3 +34,5 @@ def main():
             else:
                 print(f'\033[31merror: directory "{directory}" not found\033[m')
                 return True
+    else:
+        print(f'\033[31merror: "test" argument not specified. See --help.\033[m')
