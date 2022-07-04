@@ -87,10 +87,11 @@ def execute_module(module_name: str, msg: bool = True) -> bool:
         print('-' * 30)
         if not result:
             print('\033[1;31mFAILED.\033[m')
+            return True
         else:
             print('\033[1;32mSUCCESS.\033[m')
 
-    return result
+    return False
 
 
 def execute_modules_dir(modules_dir: str):
@@ -104,7 +105,8 @@ def execute_modules_dir(modules_dir: str):
             if not result:
                 print('-' * 30)
                 print('\033[1;31mFAILED.\033[m')
-                return None
+                return True
 
     print('-' * 30)
     print('\033[1;32mSUCCESS\033[m')
+    return False

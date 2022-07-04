@@ -43,13 +43,15 @@ def main():
         if file:
             if os.path.isfile(file):
                 file = file.replace('.py', '')
-                execution.execute_module(file)
+                result = execution.execute_module(file)
             else:
                 print(f'\033[31merror: file "{file}" not found\033[m')
                 return True
         elif directory:
             if os.path.isdir(directory):
-                execution.execute_modules_dir(directory)
+                result = execution.execute_modules_dir(directory)
             else:
                 print(f'\033[31merror: directory "{directory}" not found\033[m')
                 return True
+
+    return result
