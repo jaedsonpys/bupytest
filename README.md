@@ -2,7 +2,7 @@
 
 BuPyTest is a library to perform **unit tests** on your code by classes. You can create tests using classes and run them together in a single file.
 
-In version `0.2.0` you can:
+In version `0.3.0` you can:
 
 - [x] Test **multiple classes** in one file;
 - [x] Test using command line;

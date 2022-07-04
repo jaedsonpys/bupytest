@@ -25,7 +25,7 @@ def main():
     parser = ArgEasy(
         project_name='BuPyTest',
         description='Perform fast and detailed unit tests with BuPyTest.',
-        version='0.2.0'
+        version='0.3.0'
     )
 
     parser.add_argument('test', 'Tests a module or a module directory', action='store_true')

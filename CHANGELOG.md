@@ -24,3 +24,16 @@
 ## Fix
 
 - [`0adf5f9`](https://github.com/jaedsonpys/bupytest/commit/0adf5f9): Insert "./" path in sys.path list
+
+# 0.3.0
+
+- [BuPyTest 0.3.0 in PyPi](https://pypi.org/project/bupytest/0.3.0/)
+- [BuPyTest 0.3.0 in GitHub Release](https://github.com/jaedsonpys/bupytest/releases/tag/v0.3.0)
+
+## Aditions
+
+- [`2400d4f`](https://github.com/jaedsonpys/bupytest/commit/2400d4f): Returning test result exit code;
+
+## Fix
+
+- [`19f2619`](https://github.com/jaedsonpys/bupytest/commit/19f2619): Adding GPL license to source code.
