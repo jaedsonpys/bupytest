@@ -33,6 +33,7 @@ def main():
     parser.add_flag('-m', 'Specifies that the path of "test" is a module')
 
     args = parser.get_args()
+    result = False
 
     if args.test:
         sys.path.insert(0, './')
