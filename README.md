@@ -4,7 +4,7 @@ BuPyTest is a library to perform **unit tests** on your code by classes. You can
 
 With `bupytest`, you can implement [**git hooks**](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) to automatically run tests using [Command Line](#command-line).
 
-In version `0.3.0` you can:
+In version `0.3.1` you can:
 
 - [x] Test **multiple classes** in one file;
 - [x] Test using command line;
