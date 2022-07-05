@@ -37,3 +37,12 @@
 ## Fix
 
 - [`19f2619`](https://github.com/jaedsonpys/bupytest/commit/19f2619): Adding GPL license to source code.
+
+# 0.3.1
+
+- [BuPyTest 0.3.1 in PyPi](https://pypi.org/project/bupytest/0.3.1/)
+- [BuPyTest 0.3.1 in GitHub Release](https://github.com/jaedsonpys/bupytest/releases/tag/v0.3.1)
+  
+## Fix
+
+- [`8540874`](https://github.com/jaedsonpys/bupytest/commit/8540874): Fixing "UnboundLocalError" exception by setting a default value to "result" variable.
