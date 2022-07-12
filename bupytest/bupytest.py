@@ -116,7 +116,3 @@ class UnitTest(BaseTest):
                 'file': _test_file,
                 'message': error_msg
             }
-
-
-if __name__ == '__main__':
-    pass
