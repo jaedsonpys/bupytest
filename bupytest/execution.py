@@ -69,7 +69,6 @@ def run_tests(module_name: str, package: str = None, print_module: bool = False)
 def this():
     stack = inspect.stack()
 
-    _test_name = stack[1].function
     _test_file = stack[1].filename.replace('.py', '')
     _test_file_module = os.path.basename(_test_file)
 
