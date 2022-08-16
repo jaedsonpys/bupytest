@@ -55,3 +55,12 @@
 ## Improvements
 
 - [`dd702e2`](https://github.com/jaedsonpys/bupytest/commit/dd702e2): Removing `-d` and `-m` flags from parser.
+
+# 1.0.1
+
+- [BuPyTest 1.0.1 in PyPi](https://pypi.org/project/bupytest/1.0.1/)
+- [BuPyTest 1.0.1 in GitHub Release](https://github.com/jaedsonpys/bupytest/releases/tag/v1.0.1)
+  
+## Fix
+
+- [`daf9415`](https://github.com/jaedsonpys/bupytest/commit/daf9415): Fixing error when testing module inside a directory.
