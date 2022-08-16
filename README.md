@@ -83,27 +83,21 @@ if __name__ == '__main__':
     bupytest.this()
 ```
 
-### Command Line
+## Command Line
 
 `bupytest` also has a **command line** application available to run tests, the script is called `bupytest`, see some **commands** and **flags** (use `--help` to get help):
 
-- `test`: this command tells you that a test will be run;
-- `-m`: this flag informs that the test is a python module;
-- `-d`: this flag informs that the test is a directory of test modules.
-
-With the `-d` flag, each of the files starting with "test_" will be executed. See an example of testing a module:
+Just use the `test` command to test one module or a directory with multiple modules. Here is an example:
 
 ```commandline
-bupytest test -m test_cookiedb.py
+bupytest test test_cookiedb.py
 ```
 
 Now testing multiple test modules inside a directory:
 
 ```commandline
-bupytest test -d tests/
+bupytest test tests/
 ```
-
-> The `-m` and `-d` flags require the module or directory name.
 
 ## License
 
