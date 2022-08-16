@@ -46,3 +46,12 @@
 ## Fix
 
 - [`8540874`](https://github.com/jaedsonpys/bupytest/commit/8540874): Fixing "UnboundLocalError" exception by setting a default value to "result" variable.
+
+# 1.0.0
+
+- [BuPyTest 1.0.0 in PyPi](https://pypi.org/project/bupytest/1.0.0/)
+- [BuPyTest 1.0.0 in GitHub Release](https://github.com/jaedsonpys/bupytest/releases/tag/v1.0.0)
+  
+## Improvements
+
+- [`dd702e2`](https://github.com/jaedsonpys/bupytest/commit/dd702e2): Removing `-d` and `-m` flags from parser.
