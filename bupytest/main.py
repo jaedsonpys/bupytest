@@ -38,8 +38,14 @@ def main():
         filepath = args.test
 
         if os.path.isfile(filepath):
-            file = filepath.replace('.py', '')
-            result = execution.execute_module(file)
+            filedir = os.path.dirname(filepath)
+            filepath = filepath.replace('.py', '')
+
+            if os.path.isdir(filedir):
+                sys.path.insert(0, os.path.join('.', filedir))
+                filepath = os.path.basename(filepath)
+
+            result = execution.execute_module(filepath)
         elif os.path.isdir(filepath):
             result = execution.execute_modules_dir(filepath)
         else:
