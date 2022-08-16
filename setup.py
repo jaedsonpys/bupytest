@@ -24,5 +24,6 @@ setup(
         'console_scripts': [
             'bupytest = bupytest.main:main'
         ]
-    }
+    },
+    keywords=['test', 'unittest', 'python', 'tdd']
 )
