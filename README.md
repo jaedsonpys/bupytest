@@ -97,11 +97,12 @@ Now testing multiple test modules inside a directory:
 bupytest test tests/
 ```
 
+To test multiple modules from a directory, as in the example above, the name of the modules to be tested **must** start with `test_`, otherwise the test **will not run. 
+
 ## License
 
 GNU GENERAL PUBLIC LICENSE
 Version 3, 29 June 2007
 
 Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
-Everyone is permitted to copy and distribute verbatim copies
-of this license document, but changing it is not allowed.
+Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.
