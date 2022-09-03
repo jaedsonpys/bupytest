@@ -73,3 +73,12 @@
 ## Fix
 
 - [`2d9184b`](https://github.com/jaedsonpys/bupytest/commit/2d9184b): Updating dependencies in requirements.txt and setup script.
+
+# 1.0.3
+
+- [BuPyTest 1.0.3 in PyPi](https://pypi.org/project/bupytest/1.0.3/)
+- [BuPyTest 1.0.3 in GitHub Release](https://github.com/jaedsonpys/bupytest/releases/tag/v1.0.3)
+  
+## Fix
+
+- [`e5905e2`](https://github.com/jaedsonpys/bupytest/commit/e5905e2): Passing "." package in `run_tests` function.
