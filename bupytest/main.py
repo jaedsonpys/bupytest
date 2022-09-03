@@ -23,14 +23,14 @@ import sys
 
 def main():
     parser = ArgEasy(
-        project_name='BuPyTest',
+        name='BuPyTest',
         description='Perform fast and detailed unit tests with BuPyTest.',
-        version='1.0.1'
+        version='1.0.2'
     )
 
     parser.add_argument('test', 'Tests a module or a module directory')
 
-    args = parser.get_args()
+    args = parser.parse()
     result = 0
 
     if args.test:
