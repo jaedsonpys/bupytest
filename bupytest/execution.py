@@ -100,7 +100,7 @@ def execute_modules_dir(modules_dir: str):
     for i in dirs:
         if i.startswith('test_') and i.endswith('.py'):
             i = i.replace('.py', '')
-            result = run_tests(i, package='.tests', print_module=True)
+            result = run_tests(i, package='.', print_module=True)
             if not result:
                 print('-' * 30)
                 print('\033[1;31mFAILED.\033[m')
