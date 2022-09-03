@@ -64,3 +64,12 @@
 ## Fix
 
 - [`daf9415`](https://github.com/jaedsonpys/bupytest/commit/daf9415): Fixing error when testing module inside a directory.
+
+# 1.0.2
+
+- [BuPyTest 1.0.2 in PyPi](https://pypi.org/project/bupytest/1.0.2/)
+- [BuPyTest 1.0.2 in GitHub Release](https://github.com/jaedsonpys/bupytest/releases/tag/v1.0.2)
+  
+## Fix
+
+- [`2d9184b`](https://github.com/jaedsonpys/bupytest/commit/2d9184b): Updating dependencies in requirements.txt and setup script.
