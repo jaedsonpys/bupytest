@@ -83,6 +83,8 @@ class UnitTest(BaseTest):
                 'message': error_msg
             }
 
+            raise AssertionError(error_msg)
+
     def assert_false(self, value: Any, message: str = None):
         if message:
             error_msg = message
@@ -100,6 +102,8 @@ class UnitTest(BaseTest):
                 'message': error_msg
             }
 
+            raise AssertionError(error_msg)
+
     def assert_expected(self, value: Any, expected: Any, message: str = None):
         if message:
             error_msg = message
@@ -116,3 +120,5 @@ class UnitTest(BaseTest):
                 'file': _test_file,
                 'message': error_msg
             }
+
+            raise AssertionError(error_msg)
