@@ -38,18 +38,12 @@ def run_tests(module_name: str, package: str = None, print_module: bool = False)
 
     for test in test_list:
         test = test()
-        has_error = test.run()
+        
+        try:
+            test.run()
+        except AssertionError:
+            cls_test_name = test.__class__.__name__
 
-        cls_test_name = test.__class__.__name__
-        finished_tests = test.get_finished_tests()
-
-        for name, info in finished_tests.items():
-            if print_module:
-                print(f'\033[32m{module_name}.{cls_test_name}.{name}: {info["time"]} | OK\033[m')
-            else:
-                print(f'\033[32m{cls_test_name}.{name}: {info["time"]} | OK\033[m')
-
-        if has_error:
             failed_test = test.failed_test
             name = failed_test['function']
             error_msg = failed_test['message']
@@ -60,6 +54,15 @@ def run_tests(module_name: str, package: str = None, print_module: bool = False)
             else:
                 print(f'\033[31m{cls_test_name}.{name}: {error_msg} | FAILED\033[m')
             return False
+        else:
+            cls_test_name = test.__class__.__name__
+            finished_tests = test.get_finished_tests()
+
+            for name, info in finished_tests.items():
+                if print_module:
+                    print(f'\033[32m{module_name}.{cls_test_name}.{name}: {info["time"]} | OK\033[m')
+                else:
+                    print(f'\033[32m{cls_test_name}.{name}: {info["time"]} | OK\033[m')
 
         print('-' * 30)
 
