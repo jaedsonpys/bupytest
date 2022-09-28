@@ -82,3 +82,13 @@
 ## Fix
 
 - [`e5905e2`](https://github.com/jaedsonpys/bupytest/commit/e5905e2): Passing "." package in `run_tests` function.
+
+# 1.1.0
+
+- [BuPyTest 1.1.0 in PyPi](https://pypi.org/project/bupytest/1.1.0/)
+- [BuPyTest 1.1.0 in GitHub Release](https://github.com/jaedsonpys/bupytest/releases/tag/v1.1.0)
+  
+## Fix
+
+- [`15dfb35`](https://github.com/jaedsonpys/bupytest/commit/15dfb35): Raise `AssertionError` exception in assert methods;
+- [`193021e`](https://github.com/jaedsonpys/bupytest/commit/193021e): Stop test when assert is wrong.
