@@ -14,7 +14,7 @@ setup(
     version=__version__,
     license='GPL-3.0',
     packages=['bupytest'],
-    install_requires=['argeasy==2.0.1'],
+    install_requires=['argeasy==3.0.0'],
     url='https://github.com/jaedsonpys/bupytest',
     project_urls={
         'License': 'https://github.com/jaedsonpys/bupytest/blob/master/LICENSE',
