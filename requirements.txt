@@ -1,1 +1,1 @@
-argeasy==2.0.1
+argeasy==3.0.0
