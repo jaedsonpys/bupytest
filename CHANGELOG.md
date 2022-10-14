@@ -92,3 +92,13 @@
 
 - [`15dfb35`](https://github.com/jaedsonpys/bupytest/commit/15dfb35): Raise `AssertionError` exception in assert methods;
 - [`193021e`](https://github.com/jaedsonpys/bupytest/commit/193021e): Stop test when assert is wrong.
+
+# 1.1.1
+
+- [BuPyTest 1.1.1 in PyPi](https://pypi.org/project/bupytest/1.1.1/)
+- [BuPyTest 1.1.1 in GitHub Release](https://github.com/jaedsonpys/bupytest/releases/tag/v1.1.1)
+  
+## Fix
+
+- [`8e3da01`](https://github.com/jaedsonpys/bupytest/commit/8e3da01): Updating project requirements;
+- [`f3fc341`](https://github.com/jaedsonpys/bupytest/commit/f3fc341): Updating requirements version.
