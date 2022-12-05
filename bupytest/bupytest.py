@@ -14,10 +14,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from datetime import datetime
-from typing import Any
-
 import inspect
+import time
+from typing import Any
 
 
 class BaseTest:
@@ -42,21 +41,17 @@ class BaseTest:
         self._test_methods = self._get_test_methods()
         for test in self._test_methods:
             method_name = test.__name__
-            start_time = datetime.now()
+            start_time = time.time()
             test.__call__()
-            finished_time = datetime.now()
+            finished_time = time.time()
 
             if self.failed_test:
                 return True
 
-            second_time = str(finished_time.second - start_time.second)
-            microseconds_time = str(finished_time.microsecond - start_time.microsecond)
-
-            if len(second_time) == 1:
-                second_time = '0' + second_time
+            test_time = finished_time - start_time
 
             self._finished_tests[method_name] = {
-                'time': f'{second_time}.{microseconds_time[:2]}'
+                'time': f'{test_time:.4f}'
             }
 
         return False
