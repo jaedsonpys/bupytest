@@ -63,12 +63,13 @@ def run_tests(module_name: str, package: str = None, print_module: bool = False)
             failed_test = test.failed_test
             name = failed_test['function']
             error_msg = failed_test['message']
+            test_time = failed_test['time']
 
             print('\033[1;41;37m  FAILED   \033[m', end=' ')
             if print_module:
-                print(f'\033[31m{module_name}.{cls_test_name}.{name}: {error_msg}\033[m')
+                print(f'\033[33m[{test_time}]\033[m31 {module_name}.{cls_test_name}.{name}: {error_msg}\033[m')
             else:
-                print(f'\033[31m{cls_test_name}.{name}: {error_msg}\033[m')
+                print(f'\033[33m[{test_time}]\033[m31 {cls_test_name}.{name}: {error_msg}\033[m')
             return False
         else:
             for name, info in test.get_finished_tests().items():
