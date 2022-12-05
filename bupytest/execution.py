@@ -49,11 +49,11 @@ def run_tests(module_name: str, package: str = None, print_module: bool = False)
 
     for test in test_list:
         test = test()
+        has_failed = test.run()
+
         cls_test_name = test.__class__.__name__
-        
-        try:
-            test.run()
-        except AssertionError:
+
+        if has_failed:
             for name, info in test.get_finished_tests().items():
                 if print_module:
                     _print_successful_test(info, cls_test_name, name, module_name)
@@ -67,9 +67,9 @@ def run_tests(module_name: str, package: str = None, print_module: bool = False)
 
             print('\033[1;41;37m  FAILED   \033[m', end=' ')
             if print_module:
-                print(f'\033[33m[{test_time}]\033[m31 {module_name}.{cls_test_name}.{name}: {error_msg}\033[m')
+                print(f'\033[33m[{test_time}]\033[31m {module_name}.{cls_test_name}.{name}: {error_msg}\033[m')
             else:
-                print(f'\033[33m[{test_time}]\033[m31 {cls_test_name}.{name}: {error_msg}\033[m')
+                print(f'\033[33m[{test_time}]\033[31m {cls_test_name}.{name}: {error_msg}\033[m')
             return False
         else:
             for name, info in test.get_finished_tests().items():
