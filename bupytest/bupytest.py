@@ -40,7 +40,6 @@ class BaseTest:
     def run(self) -> bool:
         self._test_methods = self._get_test_methods()
         for test in self._test_methods:
-            method_name = test.__name__
             start_time = time.time()
             test.__call__()
             finished_time = time.time()
@@ -49,8 +48,7 @@ class BaseTest:
                 return True
 
             test_time = finished_time - start_time
-
-            self._finished_tests[method_name] = {
+            self._finished_tests[test.__name__] = {
                 'time': f'{test_time:.4f}'
             }
 
