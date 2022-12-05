@@ -102,3 +102,18 @@
 
 - [`8e3da01`](https://github.com/jaedsonpys/bupytest/commit/8e3da01): Updating project requirements;
 - [`f3fc341`](https://github.com/jaedsonpys/bupytest/commit/f3fc341): Updating requirements version.
+
+# 1.2.0
+
+- [BuPyTest 1.2.0 in PyPi](https://pypi.org/project/bupytest/1.2.0/)
+- [BuPyTest 1.2.0 in GitHub Release](https://github.com/jaedsonpys/bupytest/releases/tag/v1.2.0)
+  
+## Improvements
+
+- [`c7f4384`](https://github.com/jaedsonpys/bupytest/commit/c7f4384): Changing error and success log;
+- [`3f8b10d`](https://github.com/jaedsonpys/bupytest/commit/3f8b10d): Changing final message;
+- [`4c087a7`](https://github.com/jaedsonpys/bupytest/commit/4c087a7): Adding function to print successful tests;
+- [`b57a2ab`](https://github.com/jaedsonpys/bupytest/commit/b57a2ab): Using `time.time()` function to get test time;
+- [`bf02622`](https://github.com/jaedsonpys/bupytest/commit/bf02622): Removing unnecessary variable;
+- [`2e161f4`](https://github.com/jaedsonpys/bupytest/commit/2e161f4): Print test time in failed test;
+- [`49bac1f`](https://github.com/jaedsonpys/bupytest/commit/49bac1f): Handling `AssertionError` exception in `BaseTest.run`.
