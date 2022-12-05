@@ -1,12 +1,12 @@
-venv
-__pycache__
-PROJECT.md
 
 # setup
 build
 dist
-*.egg-info
+*.egg-info/
 
 # python
-__pycache__
-*.pyc
+venv/
+__pycache__/
+
+# test
+test_bupytest.py
