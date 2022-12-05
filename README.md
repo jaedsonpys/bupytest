@@ -7,7 +7,7 @@ With `bupytest`, you can implement [**git hooks**](https://git-scm.com/book/en/v
 - [X] Test multiple files using **command line**;
 - [x] Test only one file using **command line**;
 - [x] Test **multiple classes** in one file;
-- [x] Test using command line;
+- [x] Test using command line.
 
 You can install the **latest version** of BuPyTest using the `pip` package manager:
 
@@ -101,8 +101,10 @@ To test multiple modules from a directory, as in the example above, the name of 
 
 ## License
 
+```text
 GNU GENERAL PUBLIC LICENSE
 Version 3, 29 June 2007
+```
 
 Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
 Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.
