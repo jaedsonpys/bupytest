@@ -44,12 +44,15 @@ class BaseTest:
             test.__call__()
             finished_time = time.time()
 
+            test_time = finished_time - start_time
+            time_str = f'{test_time:.4f}'
+
             if self.failed_test:
+                self.failed_test['time'] = time_str
                 return True
 
-            test_time = finished_time - start_time
             self._finished_tests[test.__name__] = {
-                'time': f'{test_time:.4f}'
+                'time': time_str
             }
 
         return False
