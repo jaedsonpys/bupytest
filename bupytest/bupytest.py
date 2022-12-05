@@ -21,7 +21,6 @@ from typing import Any
 
 class BaseTest:
     def __init__(self):
-        self._test_methods = []
         self._finished_tests = {}
         self.failed_test = {}
 
@@ -38,22 +37,24 @@ class BaseTest:
         return self._finished_tests
 
     def run(self) -> bool:
-        self._test_methods = self._get_test_methods()
-        for test in self._test_methods:
-            start_time = time.time()
-            test.__call__()
-            finished_time = time.time()
-
-            test_time = finished_time - start_time
-            time_str = f'{test_time:.4f}'
-
-            if self.failed_test:
+        for test in self._get_test_methods():
+            try:
+                start_time = time.time()
+                test.__call__()
+            except AssertionError:
+                finished_time = time.time()
+                test_time = finished_time - start_time
+                time_str = f'{test_time:.4f}'
                 self.failed_test['time'] = time_str
                 return True
+            else:
+                finished_time = time.time()
+                test_time = finished_time - start_time
+                time_str = f'{test_time:.4f}'
 
-            self._finished_tests[test.__name__] = {
-                'time': time_str
-            }
+                self._finished_tests[test.__name__] = {
+                    'time': time_str
+                }
 
         return False
 
