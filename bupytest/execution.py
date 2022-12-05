@@ -75,22 +75,18 @@ def this():
     _test_file_module = os.path.basename(_test_file)
 
     result = run_tests(_test_file_module)
-    print('-' * 30)
     if not result:
-        print('\033[1;31mFAILED.\033[m')
+        print('\n\033[31m>> Test ended with errors\033[m')
     else:
-        print('\033[1;32mSUCCESS.\033[m')
+        print('\n\033[32m>> Test completed without errors\033[m')
 
 
-def execute_module(module_name: str, msg: bool = True) -> bool:
+def execute_module(module_name: str) -> bool:
     result = run_tests(module_name)
-    if msg:
-        print('-' * 30)
-        if not result:
-            print('\033[1;31mFAILED.\033[m')
-            return True
-        else:
-            print('\033[1;32mSUCCESS.\033[m')
+    if not result:
+        print('\n\033[31m>> Test ended with errors\033[m')
+    else:
+        print('\n\033[32m>> Test completed without errors\033[m')
 
     return False
 
@@ -104,10 +100,8 @@ def execute_modules_dir(modules_dir: str):
             i = i.replace('.py', '')
             result = run_tests(i, package='.', print_module=True)
             if not result:
-                print('-' * 30)
-                print('\033[1;31mFAILED.\033[m')
+                print('\n\033[31m>> Test ended with errors\033[m')
                 return True
 
-    print('-' * 30)
-    print('\033[1;32mSUCCESS\033[m')
+    print('\n\033[32m>> Test completed without errors\033[m')
     return False
