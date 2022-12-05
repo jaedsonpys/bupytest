@@ -48,23 +48,22 @@ def run_tests(module_name: str, package: str = None, print_module: bool = False)
             name = failed_test['function']
             error_msg = failed_test['message']
 
-            print('-' * 30)
+            print('\033[1;41;37m  FAILED  \033[m', end=' ')
             if print_module:
-                print(f'\033[31m{module_name}.{cls_test_name}.{name}: {error_msg} | FAILED\033[m')
+                print(f'\033[31m{module_name}.{cls_test_name}.{name}: {error_msg}\033[m')
             else:
-                print(f'\033[31m{cls_test_name}.{name}: {error_msg} | FAILED\033[m')
+                print(f'\033[31m{cls_test_name}.{name}: {error_msg}\033[m')
             return False
         else:
             cls_test_name = test.__class__.__name__
             finished_tests = test.get_finished_tests()
 
             for name, info in finished_tests.items():
+                print('\033[1;42;30m  SUCCESS  \033[m', end=' ')
                 if print_module:
-                    print(f'\033[32m{module_name}.{cls_test_name}.{name}: {info["time"]} | OK\033[m')
+                    print(f'\033[33m[{info["time"]}]\033[32m {module_name}.{cls_test_name}.{name}\033[m')
                 else:
-                    print(f'\033[32m{cls_test_name}.{name}: {info["time"]} | OK\033[m')
-
-        print('-' * 30)
+                    print(f'\033[33m[{info["time"]}]\033[32m {cls_test_name}.{name}\033[m')
 
     return True
 
