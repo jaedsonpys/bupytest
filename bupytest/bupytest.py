@@ -16,6 +16,7 @@
 
 import inspect
 import time
+import traceback
 from typing import Any
 
 
@@ -62,6 +63,25 @@ class BaseTest:
 class UnitTest(BaseTest):
     def __init__(self):
         super().__init__()
+
+    def _assert_error(self, test: str, file: str, message: str) -> None:
+        stack = traceback.extract_stack(limit=3)
+        trace = traceback.format_list(stack)[0].split('\n')
+
+        stack_info, call_line = trace[:2]
+        call_line_number = stack_info.split(',')[1].strip()
+        call_line = call_line.strip()
+        call_line_number = call_line_number.replace('line ', '')
+        
+        self._error_assert = {
+            'test': test,
+            'file': file,
+            'message': message,
+            'assertion': call_line,
+            'line_number': call_line_number
+        }
+
+        raise AssertionError(message)
 
     def assert_true(self, value: Any, message: str = None):
         if message:
