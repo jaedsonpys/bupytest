@@ -49,17 +49,16 @@ def run_tests(module_name: str, package: str = None, print_module: bool = False)
 
     for test in test_list:
         test = test()
-        has_failed = test.run()
-
         cls_test_name = test.__class__.__name__
 
-        if has_failed:
-            for name, info in test.get_finished_tests().items():
+        try:
+            for _test in test.run():
+                name = _test['function']
                 if print_module:
-                    _print_successful_test(info, cls_test_name, name, module_name)
+                    _print_successful_test(_test, cls_test_name, name, module_name)
                 else:
-                    _print_successful_test(info, cls_test_name, name)
-
+                    _print_successful_test(_test, cls_test_name, name)
+        except AssertionError:
             failed_test = test.failed_test
             name = failed_test['function']
             error_msg = failed_test['message']
@@ -71,12 +70,6 @@ def run_tests(module_name: str, package: str = None, print_module: bool = False)
             else:
                 print(f'\033[33m[{test_time}]\033[31m {cls_test_name}.{name}: {error_msg}\033[m')
             return False
-        else:
-            for name, info in test.get_finished_tests().items():
-                if print_module:
-                    _print_successful_test(info, cls_test_name, name, module_name)
-                else:
-                    _print_successful_test(info, cls_test_name, name)
 
     return True
 
