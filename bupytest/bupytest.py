@@ -73,7 +73,7 @@ class UnitTest(BaseTest):
         call_line = call_line.strip()
         call_line_number = call_line_number.replace('line ', '')
         
-        self._error_assert = {
+        self._failed_test = {
             'test': test,
             'file': file,
             'message': message,
