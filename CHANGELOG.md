@@ -5,7 +5,7 @@
 - [BuPyTest 0.1.0 in PyPi](https://pypi.org/project/bupytest/0.1.0/)
 - [BuPyTest 0.1.0 in GitHub Release](https://github.com/jaedsonpys/bupytest/releases/tag/0.1.0)
 
-## Aditions
+## Additions
 
 - `bupytest.UnitTest`: Test **multiple classes** in one file;
 - `bupytest.BaseTest`: Sequential testing of **test methods**.
@@ -15,7 +15,7 @@
 - [BuPyTest 0.2.0 in PyPi](https://pypi.org/project/bupytest/0.2.0/)
 - [BuPyTest 0.2.0 in GitHub Release](https://github.com/jaedsonpys/bupytest/releases/tag/0.2.0)
 
-## Aditions
+## Additions
 
 - [`1a87f20`](https://github.com/jaedsonpys/bupytest/commit/1a87f20): Creating function to run tests from module;
 - [`93fa68e`](https://github.com/jaedsonpys/bupytest/commit/93fa68e): Creating function to run all tests in a directory;
@@ -30,7 +30,7 @@
 - [BuPyTest 0.3.0 in PyPi](https://pypi.org/project/bupytest/0.3.0/)
 - [BuPyTest 0.3.0 in GitHub Release](https://github.com/jaedsonpys/bupytest/releases/tag/v0.3.0)
 
-## Aditions
+## Additions
 
 - [`2400d4f`](https://github.com/jaedsonpys/bupytest/commit/2400d4f): Returning test result exit code;
 
