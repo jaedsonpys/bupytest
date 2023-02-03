@@ -53,10 +53,7 @@ class BaseTest:
         raise AssertionError(message)
 
     def assert_true(self, value: Any, message: str = None):
-        if message:
-            error_msg = message
-        else:
-            error_msg = f'{value} is not true'
+        error_msg = message or f'{value} is not true'
 
         stack = inspect.stack()
         _test_name = stack[1].function
@@ -66,10 +63,7 @@ class BaseTest:
             self._assert_error(_test_name, _test_file, error_msg)
 
     def assert_false(self, value: Any, message: str = None):
-        if message:
-            error_msg = message
-        else:
-            error_msg = f'{value} is not true'
+        error_msg = message or f'{value} is not false'
 
         stack = inspect.stack()
         _test_name = stack[1].function
@@ -79,10 +73,7 @@ class BaseTest:
             self._assert_error(_test_name, _test_file, error_msg)
 
     def assert_expected(self, value: Any, expected: Any, message: str = None):
-        if message:
-            error_msg = message
-        else:
-            error_msg = f'"{value}" is not "{expected}"'
+        error_msg = message or f'"{value}" is not "{expected}"'
 
         stack = inspect.stack()
         _test_name = stack[1].function
