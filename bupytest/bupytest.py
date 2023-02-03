@@ -94,13 +94,7 @@ class UnitTest(BaseTest):
         _test_file = stack[1].filename
 
         if not value:
-            self.failed_test = {
-                'function': _test_name,
-                'file': _test_file,
-                'message': error_msg
-            }
-
-            raise AssertionError(error_msg)
+            self._assert_error(_test_name, _test_file, error_msg)
 
     def assert_false(self, value: Any, message: str = None):
         if message:
@@ -113,13 +107,7 @@ class UnitTest(BaseTest):
         _test_file = stack[1].filename
 
         if value:
-            self.failed_test = {
-                'function': _test_name,
-                'file': _test_file,
-                'message': error_msg
-            }
-
-            raise AssertionError(error_msg)
+            self._assert_error(_test_name, _test_file, error_msg)
 
     def assert_expected(self, value: Any, expected: Any, message: str = None):
         if message:
@@ -132,10 +120,4 @@ class UnitTest(BaseTest):
         _test_file = stack[1].filename
 
         if value != expected:
-            self.failed_test = {
-                'function': _test_name,
-                'file': _test_file,
-                'message': error_msg
-            }
-
-            raise AssertionError(error_msg)
+            self._assert_error(_test_name, _test_file, error_msg)
