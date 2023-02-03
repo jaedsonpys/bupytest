@@ -93,6 +93,14 @@ class BaseTest:
 
 
 class UnitTest(BaseTest):
+    """Sequential Unit Test.
+
+    The tests will run according to their creation order.
+    All unit tests must start with the "test_" prefix.
+
+    :param BaseTest: Base class for testing
+    """
+
     def __init__(self):
         super().__init__()
 
