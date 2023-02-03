@@ -25,6 +25,9 @@ class BaseTest:
         self._finished_tests = {}
         self.failed_test = {}
 
+    def get_finished_tests(self) -> dict:
+        return self._finished_tests
+
     def _get_test_methods(self) -> list:
         test_methods = []
         for attr in self.__dir__():
@@ -33,22 +36,6 @@ class BaseTest:
                 test_methods.append(attr_obj)
 
         return test_methods
-
-    def get_finished_tests(self) -> dict:
-        return self._finished_tests
-
-    def run(self) -> dict:
-        for test in self._get_test_methods():
-            start_time = time.time()
-            test.__call__()
-            finished_time = time.time()
-            test_time = f'{finished_time - start_time:.3f}'
-            yield {'function': test.__name__, 'time': test_time}
-
-
-class UnitTest(BaseTest):
-    def __init__(self):
-        super().__init__()
 
     def _assert_error(self, test: str, file: str, message: str) -> None:
         stack = traceback.extract_stack(limit=3)
@@ -107,3 +94,16 @@ class UnitTest(BaseTest):
 
         if value != expected:
             self._assert_error(_test_name, _test_file, error_msg)
+
+
+class UnitTest(BaseTest):
+    def __init__(self):
+        super().__init__()
+
+    def run(self) -> dict:
+        for test in self._get_test_methods():
+            start_time = time.time()
+            test.__call__()
+            finished_time = time.time()
+            test_time = f'{finished_time - start_time:.3f}'
+            yield {'function': test.__name__, 'time': test_time}
