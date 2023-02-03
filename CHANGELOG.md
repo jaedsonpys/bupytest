@@ -117,3 +117,19 @@
 - [`bf02622`](https://github.com/jaedsonpys/bupytest/commit/bf02622): Removing unnecessary variable;
 - [`2e161f4`](https://github.com/jaedsonpys/bupytest/commit/2e161f4): Print test time in failed test;
 - [`49bac1f`](https://github.com/jaedsonpys/bupytest/commit/49bac1f): Handling `AssertionError` exception in `BaseTest.run`.
+
+# 1.3.0
+
+- [BuPyTest 1.3.0 in PyPi](https://pypi.org/project/bupytest/1.3.0/)
+- [BuPyTest 1.3.0 in GitHub Release](https://github.com/jaedsonpys/bupytest/releases/tag/v1.3.0)
+  
+## Improvements
+
+- [`84b6d11`](https://github.com/jaedsonpys/bupytest/commit/84b6d11): Use `_assert_error()` method in all assert methods;
+- [`9394bce`](https://github.com/jaedsonpys/bupytest/commit/9394bce): Print just 3 decimal numbers in test time;
+- [`dd634ea`](https://github.com/jaedsonpys/bupytest/commit/dd634ea): Print each finished test in real time;
+- [`bc2c736`](https://github.com/jaedsonpys/bupytest/commit/bc2c736): Remove time from failed unit test;
+- [`215a3e7`](https://github.com/jaedsonpys/bupytest/commit/215a3e7): Move assert methods to `BaseTest` class;
+- [`0404118`](https://github.com/jaedsonpys/bupytest/commit/0404118): Improve `error_msg` condition;
+- [`cc27cd6`](https://github.com/jaedsonpys/bupytest/commit/cc27cd6): Improve tests log;
+- [`1a07f80`](https://github.com/jaedsonpys/bupytest/commit/1a07f80): Print total unit test time.
