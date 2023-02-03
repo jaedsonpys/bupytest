@@ -25,11 +25,10 @@ def _print_successful_test(
     info: dict, cls_test_name: str,
     name: str, module_name: str = None,
 ):
-    print('\033[1;42;30m  SUCCESS  \033[m', end=' ')
     if module_name:
-        print(f'\033[33m[{info["time"]}]\033[32m {module_name}.{cls_test_name}.{name}\033[m')
+        print(f'(\033[32m{info["time"]}\033[m) \033[30m{module_name}.{cls_test_name}.{name}\033[m')
     else:
-        print(f'\033[33m[{info["time"]}]\033[32m {cls_test_name}.{name}\033[m')
+        print(f'(\033[32m{info["time"]}\033[m) \033[30m{cls_test_name}.{name}\033[m')
 
 
 def get_class_test(module_name: str, package: str = None) -> list:
@@ -62,12 +61,18 @@ def run_tests(module_name: str, package: str = None, print_module: bool = False)
             failed_test = test.failed_test
             name = failed_test['function']
             error_msg = failed_test['message']
+            assert_line = failed_test['line_number']
+            assert_test = failed_test['assertion']
 
-            print('\033[1;41;37m  FAILED   \033[m', end=' ')
+            print()
+
             if print_module:
-                print(f'\033[31m{module_name}.{cls_test_name}.{name}: {error_msg}\033[m')
+                print(f'(\033[1;31mFAILED\033[m) "{error_msg}" in \033[30m{module_name}.{cls_test_name}.{name}\033[m')
+                print(f'    \033[30m{assert_line} |\033[m \033[31m{assert_test}\033[m')
             else:
-                print(f'\033[31m{cls_test_name}.{name}: {error_msg}\033[m')
+                print(f'(\033[1;31mFAILED\033[m) "{error_msg}" in \033[30m{cls_test_name}.{name}\033[m')
+                print(f'    \033[30m{assert_line} |\033[m \033[31m{assert_test}\033[m')
+
             return False
 
     return True
