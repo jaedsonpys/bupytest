@@ -44,17 +44,15 @@ class BaseTest:
                 test.__call__()
             except AssertionError:
                 finished_time = time.time()
-                test_time = finished_time - start_time
-                time_str = f'{test_time:.4f}'
-                self.failed_test['time'] = time_str
+                test_time = f'{finished_time - start_time:.3f}'
+                self.failed_test['time'] = test_time
                 return True
             else:
                 finished_time = time.time()
-                test_time = finished_time - start_time
-                time_str = f'{test_time:.4f}'
+                test_time = f'{finished_time - start_time:.3f}'
 
                 self._finished_tests[test.__name__] = {
-                    'time': time_str
+                    'time': test_time
                 }
 
         return False
