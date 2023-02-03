@@ -25,11 +25,10 @@ def _print_successful_test(
     info: dict, cls_test_name: str,
     name: str, module_name: str = None,
 ):
-    print('\033[1;42;30m  SUCCESS  \033[m', end=' ')
     if module_name:
-        print(f'\033[33m[{info["time"]}]\033[32m {module_name}.{cls_test_name}.{name}\033[m')
+        print(f'(\033[32m{info["time"]:.3f}\033[m) \033[30m{module_name}.{cls_test_name}.{name}\033[m')
     else:
-        print(f'\033[33m[{info["time"]}]\033[32m {cls_test_name}.{name}\033[m')
+        print(f'(\033[32m{info["time"]:.3f}\033[m) \033[30m{cls_test_name}.{name}\033[m')
 
 
 def get_class_test(module_name: str, package: str = None) -> list:
@@ -49,58 +48,50 @@ def run_tests(module_name: str, package: str = None, print_module: bool = False)
 
     for test in test_list:
         test = test()
-        has_failed = test.run()
-
         cls_test_name = test.__class__.__name__
+        total_time = 0
 
-        if has_failed:
-            for name, info in test.get_finished_tests().items():
+        try:
+            for _test in test.run():
+                name = _test['function']
+                total_time += _test['time']
                 if print_module:
-                    _print_successful_test(info, cls_test_name, name, module_name)
+                    _print_successful_test(_test, cls_test_name, name, module_name)
                 else:
-                    _print_successful_test(info, cls_test_name, name)
+                    _print_successful_test(_test, cls_test_name, name)
 
+            print(f'\n\033[1;32mEverything working!\033[m (\033[33mfinished in \033[1;4m{total_time:.3f}\033[m)')
+        except AssertionError:
             failed_test = test.failed_test
             name = failed_test['function']
             error_msg = failed_test['message']
-            test_time = failed_test['time']
+            assert_line = failed_test['line_number']
+            assert_test = failed_test['assertion']
 
-            print('\033[1;41;37m  FAILED   \033[m', end=' ')
+            print()
+
             if print_module:
-                print(f'\033[33m[{test_time}]\033[31m {module_name}.{cls_test_name}.{name}: {error_msg}\033[m')
+                print(f'(\033[1;31mFAILED\033[m) "{error_msg}" in \033[30m{module_name}.{cls_test_name}.{name}\033[m')
+                print(f'    \033[30m{assert_line} |\033[m \033[31m{assert_test}\033[m')
             else:
-                print(f'\033[33m[{test_time}]\033[31m {cls_test_name}.{name}: {error_msg}\033[m')
+                print(f'(\033[1;31mFAILED\033[m) "{error_msg}" in \033[30m{cls_test_name}.{name}\033[m')
+                print(f'    \033[30m{assert_line} |\033[m \033[31m{assert_test}\033[m')
+
+            print(f'\n\033[1;31mSomething is wrong...\033[m (\033[33mfinished in \033[1;4m{total_time:.3f}\033[m)')
             return False
-        else:
-            for name, info in test.get_finished_tests().items():
-                if print_module:
-                    _print_successful_test(info, cls_test_name, name, module_name)
-                else:
-                    _print_successful_test(info, cls_test_name, name)
 
     return True
 
 
 def this():
     stack = inspect.stack()
-
     _test_file = stack[1].filename.replace('.py', '')
     _test_file_module = os.path.basename(_test_file)
-
-    result = run_tests(_test_file_module)
-    if not result:
-        print('\n\033[31m>> Test ended with errors\033[m')
-    else:
-        print('\n\033[32m>> Test completed without errors\033[m')
+    run_tests(_test_file_module)
 
 
 def execute_module(module_name: str) -> bool:
-    result = run_tests(module_name)
-    if not result:
-        print('\n\033[31m>> Test ended with errors\033[m')
-    else:
-        print('\n\033[32m>> Test completed without errors\033[m')
-
+    run_tests(module_name)
     return False
 
 
@@ -113,8 +104,6 @@ def execute_modules_dir(modules_dir: str):
             i = i.replace('.py', '')
             result = run_tests(i, package='.', print_module=True)
             if not result:
-                print('\n\033[31m>> Test ended with errors\033[m')
                 return True
 
-    print('\n\033[32m>> Test completed without errors\033[m')
     return False

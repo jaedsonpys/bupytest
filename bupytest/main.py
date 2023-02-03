@@ -14,18 +14,20 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from . import execution
-from argeasy import ArgEasy
-
 import os
 import sys
+
+from argeasy import ArgEasy
+
+from . import execution
+from .__init__ import __version__
 
 
 def main():
     parser = ArgEasy(
         name='BuPyTest',
         description='Perform fast and detailed unit tests with BuPyTest.',
-        version='1.0.2'
+        version=__version__
     )
 
     parser.add_argument('test', 'Tests a module or a module directory')

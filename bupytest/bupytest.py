@@ -16,12 +16,12 @@
 
 import inspect
 import time
+import traceback
 from typing import Any
 
 
 class BaseTest:
     def __init__(self):
-        self._finished_tests = {}
         self.failed_test = {}
 
     def _get_test_methods(self) -> list:
@@ -33,89 +33,71 @@ class BaseTest:
 
         return test_methods
 
-    def get_finished_tests(self) -> dict:
-        return self._finished_tests
+    def _assert_error(self, test: str, file: str, message: str) -> None:
+        stack = traceback.extract_stack(limit=3)
+        trace = traceback.format_list(stack)[0].split('\n')
 
-    def run(self) -> bool:
-        for test in self._get_test_methods():
-            try:
-                start_time = time.time()
-                test.__call__()
-            except AssertionError:
-                finished_time = time.time()
-                test_time = finished_time - start_time
-                time_str = f'{test_time:.4f}'
-                self.failed_test['time'] = time_str
-                return True
-            else:
-                finished_time = time.time()
-                test_time = finished_time - start_time
-                time_str = f'{test_time:.4f}'
+        stack_info, call_line = trace[:2]
+        call_line_number = stack_info.split(',')[1].strip()
+        call_line = call_line.strip()
+        call_line_number = call_line_number.replace('line ', '')
+        
+        self.failed_test = {
+            'file': file,
+            'function': test,
+            'message': message,
+            'assertion': call_line,
+            'line_number': call_line_number
+        }
 
-                self._finished_tests[test.__name__] = {
-                    'time': time_str
-                }
-
-        return False
-
-
-class UnitTest(BaseTest):
-    def __init__(self):
-        super().__init__()
+        raise AssertionError(message)
 
     def assert_true(self, value: Any, message: str = None):
-        if message:
-            error_msg = message
-        else:
-            error_msg = f'{value} is not true'
+        error_msg = message or f'{value} is not true'
 
         stack = inspect.stack()
         _test_name = stack[1].function
         _test_file = stack[1].filename
 
         if not value:
-            self.failed_test = {
-                'function': _test_name,
-                'file': _test_file,
-                'message': error_msg
-            }
-
-            raise AssertionError(error_msg)
+            self._assert_error(_test_name, _test_file, error_msg)
 
     def assert_false(self, value: Any, message: str = None):
-        if message:
-            error_msg = message
-        else:
-            error_msg = f'{value} is not true'
+        error_msg = message or f'{value} is not false'
 
         stack = inspect.stack()
         _test_name = stack[1].function
         _test_file = stack[1].filename
 
         if value:
-            self.failed_test = {
-                'function': _test_name,
-                'file': _test_file,
-                'message': error_msg
-            }
-
-            raise AssertionError(error_msg)
+            self._assert_error(_test_name, _test_file, error_msg)
 
     def assert_expected(self, value: Any, expected: Any, message: str = None):
-        if message:
-            error_msg = message
-        else:
-            error_msg = f'"{value}" is not "{expected}"'
+        error_msg = message or f'"{value}" is not "{expected}"'
 
         stack = inspect.stack()
         _test_name = stack[1].function
         _test_file = stack[1].filename
 
         if value != expected:
-            self.failed_test = {
-                'function': _test_name,
-                'file': _test_file,
-                'message': error_msg
-            }
+            self._assert_error(_test_name, _test_file, error_msg)
 
-            raise AssertionError(error_msg)
+
+class UnitTest(BaseTest):
+    """Sequential Unit Test.
+
+    The tests will run according to their creation order.
+    All unit tests must start with the "test_" prefix.
+
+    :param BaseTest: Base class for testing
+    """
+
+    def __init__(self):
+        super().__init__()
+
+    def run(self) -> dict:
+        for test in self._get_test_methods():
+            start_time = time.time()
+            test.__call__()
+            finished_time = time.time() - start_time
+            yield {'function': test.__name__, 'time': finished_time}
