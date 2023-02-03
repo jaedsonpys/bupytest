@@ -39,18 +39,11 @@ class BaseTest:
 
     def run(self) -> dict:
         for test in self._get_test_methods():
-            try:
-                start_time = time.time()
-                test.__call__()
-            except AssertionError as err:
-                finished_time = time.time()
-                test_time = f'{finished_time - start_time:.3f}'
-                self.failed_test['time'] = test_time
-                raise err
-            else:
-                finished_time = time.time()
-                test_time = f'{finished_time - start_time:.3f}'
-                yield {'function': test.__name__, 'time': test_time}
+            start_time = time.time()
+            test.__call__()
+            finished_time = time.time()
+            test_time = f'{finished_time - start_time:.3f}'
+            yield {'function': test.__name__, 'time': test_time}
 
 
 class UnitTest(BaseTest):
