@@ -22,11 +22,7 @@ from typing import Any
 
 class BaseTest:
     def __init__(self):
-        self._finished_tests = {}
         self.failed_test = {}
-
-    def get_finished_tests(self) -> dict:
-        return self._finished_tests
 
     def _get_test_methods(self) -> list:
         test_methods = []
