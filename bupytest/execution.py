@@ -26,9 +26,9 @@ def _print_successful_test(
     name: str, module_name: str = None,
 ):
     if module_name:
-        print(f'(\033[32m{info["time"]}\033[m) \033[30m{module_name}.{cls_test_name}.{name}\033[m')
+        print(f'(\033[32m{info["time"]:.3f}\033[m) \033[30m{module_name}.{cls_test_name}.{name}\033[m')
     else:
-        print(f'(\033[32m{info["time"]}\033[m) \033[30m{cls_test_name}.{name}\033[m')
+        print(f'(\033[32m{info["time"]:.3f}\033[m) \033[30m{cls_test_name}.{name}\033[m')
 
 
 def get_class_test(module_name: str, package: str = None) -> list:
