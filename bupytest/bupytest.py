@@ -99,6 +99,5 @@ class UnitTest(BaseTest):
         for test in self._get_test_methods():
             start_time = time.time()
             test.__call__()
-            finished_time = time.time()
-            test_time = f'{finished_time - start_time:.3f}'
-            yield {'function': test.__name__, 'time': test_time}
+            finished_time = time.time() - start_time
+            yield {'function': test.__name__, 'time': finished_time}
