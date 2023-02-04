@@ -20,7 +20,7 @@ import sys
 from argeasy import ArgEasy
 
 from . import execution
-from .__init__ import __version__
+from . import __version__
 
 
 def main():
