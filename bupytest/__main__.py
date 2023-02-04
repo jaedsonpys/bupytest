@@ -31,7 +31,6 @@ def main():
     )
 
     parser.add_argument('test', 'Tests a module or a module directory')
-
     args = parser.parse()
     result = 0
 
