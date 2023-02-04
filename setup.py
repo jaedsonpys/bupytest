@@ -22,8 +22,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'bupytest = bupytest.main:main'
+            'bupytest = bupytest.__main__:main'
         ]
     },
-    keywords=['test', 'unittest', 'python', 'tdd']
+    keywords=['test', 'unittest', 'python', 'tdd', 'unit', 'sequential']
 )
