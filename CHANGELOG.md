@@ -133,3 +133,15 @@
 - [`0404118`](https://github.com/jaedsonpys/bupytest/commit/0404118): Improve `error_msg` condition;
 - [`cc27cd6`](https://github.com/jaedsonpys/bupytest/commit/cc27cd6): Improve tests log;
 - [`1a07f80`](https://github.com/jaedsonpys/bupytest/commit/1a07f80): Print total unit test time.
+
+# 1.3.1
+
+- [BuPyTest 1.3.1 in PyPi](https://pypi.org/project/bupytest/1.3.1/)
+- [BuPyTest 1.3.1 in GitHub Release](https://github.com/jaedsonpys/bupytest/releases/tag/v1.3.1)
+  
+## Fixes
+
+- [`dfc3d75`](https://github.com/jaedsonpys/bupytest/commit/dfc3d75): Rename main script file name;
+- [`5c62b02`](https://github.com/jaedsonpys/bupytest/commit/5c62b02): Update project keywords and console scripts;
+- [`42403ba`](https://github.com/jaedsonpys/bupytest/commit/42403ba): Print test total time if all tests are finished;
+- [`528fc4d`](https://github.com/jaedsonpys/bupytest/commit/528fc4d): Update license copyright year.
